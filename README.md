@@ -51,7 +51,7 @@
         h6 { font-size: .9375rem; }
 
         .card-body {
-            padding: 2rem;
+            padding: 1.5rem 2rem;
             background: #ffffff;
             border-radius: 12px;
             box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.05);
@@ -62,7 +62,7 @@
         }
         @media (max-width: 991px) {
             .card-body {
-                padding: 1.5rem 1rem;
+                padding: 1.25rem 1rem;
             }
         }
 
@@ -163,6 +163,11 @@
                 </a>
             </li>
             <li class="relative leading-relaxed">
+                <a href="#kendala-section" class="text-sm font-medium block pl-2 text-decoration-none flex items-center gap-2">
+                    <i class="ph ph-warning text-rose-400 text-base"></i> Widget Kendala
+                </a>
+            </li>
+            <li class="relative leading-relaxed">
                 <a href="#filter-section" class="text-sm font-medium block pl-2 text-decoration-none flex items-center gap-2">
                     <i class="ph ph-faders text-emerald-400 text-base"></i> Filter & Data
                 </a>
@@ -196,40 +201,75 @@
             </div>
         </div>
 
-        <!-- Summary Widgets -->
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-5 grid-margin">
-            <!-- Widget 1: Total Provinsi (Aksen Ungu/Indigo) -->
-            <div class="card-body flex items-center gap-4 border-l-4 border-indigo-500">
-                <div class="w-14 h-14 rounded-2xl bg-indigo-50 flex items-center justify-center text-indigo-600 font-bold text-2xl shadow-inner">
+        <!-- Summary Widgets (5 Cards) -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4 grid-margin">
+            <!-- Widget 1: Total Provinsi -->
+            <div class="card-body flex items-center gap-3.5 border-l-4 border-indigo-500">
+                <div class="w-12 h-12 rounded-2xl bg-indigo-50 flex items-center justify-center text-indigo-600 font-bold text-xl shadow-inner flex-shrink-0">
                     <i class="ph ph-flag"></i>
                 </div>
                 <div>
-                    <p class="text-xs text-slate-400 uppercase font-bold tracking-wider m-0">Total Provinsi</p>
-                    <h3 id="widget-total-provinsi" class="font-bold mt-1 text-slate-800 m-0">0</h3>
+                    <p class="text-[11px] text-slate-400 uppercase font-bold tracking-wider m-0">Total Provinsi</p>
+                    <h3 id="widget-total-provinsi" class="font-bold mt-0.5 text-slate-800 m-0 text-xl">0</h3>
                 </div>
             </div>
 
-            <!-- Widget 2: Jumlah Bidang (Aksen Biru / Sky) -->
-            <div class="card-body flex items-center gap-4 border-l-4 border-sky-500">
-                <div class="w-14 h-14 rounded-2xl bg-sky-50 flex items-center justify-center text-sky-600 font-bold text-2xl shadow-inner">
+            <!-- Widget 2: Jumlah Bidang -->
+            <div class="card-body flex items-center gap-3.5 border-l-4 border-sky-500">
+                <div class="w-12 h-12 rounded-2xl bg-sky-50 flex items-center justify-center text-sky-600 font-bold text-xl shadow-inner flex-shrink-0">
                     <i class="ph ph-squares-four"></i>
                 </div>
                 <div>
-                    <p class="text-xs text-slate-400 uppercase font-bold tracking-wider m-0">Jumlah Bidang</p>
-                    <h3 id="widget-jumlah-bidang" class="font-bold mt-1 text-slate-800 m-0">0</h3>
+                    <p class="text-[11px] text-slate-400 uppercase font-bold tracking-wider m-0">Jumlah Bidang</p>
+                    <h3 id="widget-jumlah-bidang" class="font-bold mt-0.5 text-slate-800 m-0 text-xl">0</h3>
                 </div>
             </div>
 
-            <!-- Widget 3 & Chart Card (Aksen Hijau / Emerald) -->
-            <div class="card-body flex items-center justify-between gap-4 border-l-4 border-emerald-500">
-                <div>
-                    <p class="text-xs text-slate-400 uppercase font-bold tracking-wider m-0">Rata-rata Progres</p>
-                    <h3 id="widget-rata-progres" class="font-bold mt-1 text-emerald-600 m-0">0%</h3>
-                    <span class="text-[11px] text-slate-400 font-medium">Capaian Nasional</span>
+            <!-- Widget 3: Total Ada -->
+            <div class="card-body flex items-center gap-3.5 border-l-4 border-emerald-500">
+                <div class="w-12 h-12 rounded-2xl bg-emerald-50 flex items-center justify-center text-emerald-600 font-bold text-xl shadow-inner flex-shrink-0">
+                    <i class="ph ph-check-circle"></i>
                 </div>
-                <div class="w-16 h-16 relative bg-emerald-50/50 p-1.5 rounded-xl">
+                <div>
+                    <p class="text-[11px] text-slate-400 uppercase font-bold tracking-wider m-0">Total Ada</p>
+                    <h3 id="widget-total-ada" class="font-bold mt-0.5 text-emerald-600 m-0 text-xl">0</h3>
+                </div>
+            </div>
+
+            <!-- Widget 4: Total Tidak Ada -->
+            <div class="card-body flex items-center gap-3.5 border-l-4 border-rose-400">
+                <div class="w-12 h-12 rounded-2xl bg-rose-50 flex items-center justify-center text-rose-500 font-bold text-xl shadow-inner flex-shrink-0">
+                    <i class="ph ph-x-circle"></i>
+                </div>
+                <div>
+                    <p class="text-[11px] text-slate-400 uppercase font-bold tracking-wider m-0">Total Tidak Ada</p>
+                    <h3 id="widget-total-tidak-ada" class="font-bold mt-0.5 text-rose-500 m-0 text-xl">0</h3>
+                </div>
+            </div>
+
+            <!-- Widget 5: Rata-rata Progres -->
+            <div class="card-body flex items-center justify-between gap-3 border-l-4 border-amber-500 sm:col-span-2 lg:col-span-1">
+                <div>
+                    <p class="text-[11px] text-slate-400 uppercase font-bold tracking-wider m-0">Rata-rata Progres</p>
+                    <h3 id="widget-rata-progres" class="font-bold mt-0.5 text-amber-600 m-0 text-xl">0%</h3>
+                </div>
+                <div class="w-12 h-12 relative bg-amber-50/50 p-1 rounded-xl flex-shrink-0">
                     <canvas id="ratioChart"></canvas>
                 </div>
+            </div>
+        </div>
+
+        <!-- WIDGET KENDALA BARU (B2:C7 dari sheet "source kendala") -->
+        <div id="kendala-section" class="card-body grid-margin border-t-4 border-rose-500">
+            <h4 class="mb-4 font-semibold text-slate-800 flex items-center gap-2">
+                <i class="ph ph-warning-octagon text-rose-500 text-lg"></i> Ringkasan Kendala & Catatan Lapangan (Source Kendala)
+            </h4>
+            
+            <div id="kendala-loading" class="text-xs text-slate-400 italic py-4 text-center">Memuat data kendala...</div>
+            
+            <!-- Grid card untuk menampilkan baris B2:C7 -->
+            <div id="kendala-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
+                <!-- Data akan dimasukkan lewat JS -->
             </div>
         </div>
 
@@ -334,7 +374,7 @@
                             <th class="px-4 py-3.5 text-xs font-bold uppercase tracking-wider text-center w-48">Nilai</th>
                         </tr>
                     </thead>
-                    <tbody id="history-table-body" class="divide-y divide-slate-100 text-xs">
+                    <tbody id="history-table-body" class="divide-y divide-slate-100 text-sm font-medium">
                         <!-- History rows populated by JS -->
                     </tbody>
                 </table>
@@ -356,13 +396,18 @@
         const GID = '808300545';
         const HISTORY_GID = 'GANTI_DENGAN_GID_HISTORI_ANDA'; 
         
+        // URL untuk Sheet Utama
         const CSV_URL = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/export?format=csv&gid=${GID}`;
         const HISTORY_CSV_URL = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/export?format=csv&gid=${HISTORY_GID}`;
+        
+        // URL untuk Sheet "source kendala" dengan range B2:C7 (menggunakan range=B2%3AC7)
+        const KENDALA_CSV_URL = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:csv&sheet=source+kendala&range=B2:C7`;
 
         let rawData = [];
         let filteredData = [];
         let headers = [];
         let historyData = [];
+        let kendalaData = [];
         
         let currentSortColumn = null;
         let currentSortDirection = 'asc';
@@ -382,21 +427,28 @@
             
             widgetTotalProvinsi: document.getElementById('widget-total-provinsi'),
             widgetJumlahBidang: document.getElementById('widget-jumlah-bidang'),
+            widgetTotalAda: document.getElementById('widget-total-ada'),
+            widgetTotalTidakAda: document.getElementById('widget-total-tidak-ada'),
             widgetRataProgres: document.getElementById('widget-rata-progres'),
             
             historyLoadingState: document.getElementById('history-loading-state'),
             historyErrorState: document.getElementById('history-error-state'),
-            historyTableBody: document.getElementById('history-table-body')
+            historyTableBody: document.getElementById('history-table-body'),
+            
+            kendalaLoading: document.getElementById('kendala-loading'),
+            kendalaContainer: document.getElementById('kendala-container')
         };
 
         document.addEventListener('DOMContentLoaded', () => {
             setupEventListeners();
             fetchData();
             fetchHistoryData();
+            fetchKendalaData();
             
             setInterval(() => {
                 fetchData();
                 fetchHistoryData();
+                fetchKendalaData();
             }, 300000);
         });
 
@@ -430,6 +482,62 @@
                     handleFetchError("Terjadi kesalahan saat memuat data. Periksa koneksi internet.");
                 }
             });
+        }
+
+        // Mengambil data Widget Kendala dari sheet "source kendala" range B2:C7
+        function fetchKendalaData() {
+            ui.kendalaLoading.style.display = 'block';
+            ui.kendalaContainer.innerHTML = '';
+
+            Papa.parse(KENDALA_CSV_URL, {
+                download: true,
+                header: false, // Karena range B2:C7 tidak punya header teks kolom baris pertama
+                skipEmptyLines: true,
+                complete: function(results) {
+                    ui.kendalaLoading.style.display = 'none';
+                    if (results.data && results.data.length > 0) {
+                        kendalaData = results.data;
+                        renderKendalaWidgets();
+                    } else {
+                        ui.kendalaContainer.innerHTML = `<div class="text-xs text-slate-400 italic col-span-full text-center">Tidak ada data kendala ditemukan pada range B2:C7.</div>`;
+                    }
+                },
+                error: function(err) {
+                    ui.kendalaLoading.style.display = 'none';
+                    ui.kendalaContainer.innerHTML = `<div class="text-xs text-rose-500 italic col-span-full text-center">Gagal memuat sheet "source kendala". Pastikan nama sheet sesuai.</div>`;
+                    console.error(err);
+                }
+            });
+        }
+
+        function renderKendalaWidgets() {
+            ui.kendalaContainer.innerHTML = '';
+            const fragment = document.createDocumentFragment();
+
+            kendalaData.forEach((row, index) => {
+                let label = row[0] ? row[0].trim() : `Kategori ${index + 1}`;
+                let value = row[1] !== undefined ? row[1].trim() : '0';
+
+                const card = document.createElement('div');
+                card.className = "bg-rose-50/60 border border-rose-100 rounded-xl p-3.5 flex items-center justify-between gap-3 shadow-sm";
+                card.innerHTML = `
+                    <div class="flex items-center gap-3 overflow-hidden">
+                        <div class="w-10 h-10 rounded-xl bg-rose-100 text-rose-600 flex items-center justify-center flex-shrink-0 font-bold text-base">
+                            <i class="ph ph-warning"></i>
+                        </div>
+                        <div class="truncate">
+                            <p class="text-xs text-slate-600 font-semibold truncate m-0" title="${label}">${label}</p>
+                            <span class="text-[10px] text-slate-400 font-medium">Kendala Lapangan</span>
+                        </div>
+                    </div>
+                    <div class="text-right flex-shrink-0">
+                        <span class="text-lg font-extrabold text-rose-700 bg-white px-2.5 py-1 rounded-lg border border-rose-200/60 shadow-xs">${value}</span>
+                    </div>
+                `;
+                fragment.appendChild(card);
+            });
+
+            ui.kendalaContainer.appendChild(fragment);
         }
 
         // Header Tabel Utama dengan Teks Rata Tengah (Center)
@@ -605,12 +713,11 @@
                 const tr = document.createElement('tr');
                 tr.className = "hover:bg-slate-50 transition-colors";
                 
-                let html = `<td class="px-4 py-3.5 text-center text-slate-400 font-medium">${index + 1}</td>`;
+                let html = `<td class="px-4 py-2.5 text-center text-slate-400 font-medium">${index + 1}</td>`;
                 
                 headers.forEach(header => {
                     let cellData = row[header];
-                    // PERUBAHAN DI SINI: Default teks diatur rata kiri (text-left)
-                    let cellClass = "px-4 py-3.5 text-slate-700 text-left";
+                    let cellClass = "px-4 py-2.5 text-slate-700 text-left";
                     let content = cellData;
 
                     if (header === progressCol) {
@@ -623,16 +730,16 @@
                                 <div class="flex justify-between w-full text-[11px] font-bold text-slate-700">
                                     <span>${rawVal}%</span>
                                 </div>
-                                <div class="w-full bg-slate-200 rounded-full h-2 overflow-hidden shadow-inner">
-                                    <div class="bg-gradient-to-r from-indigo-500 to-emerald-500 h-2 rounded-full transition-all duration-500" style="width: ${percentage}%"></div>
+                                <div class="w-full bg-slate-200 rounded-full h-1.5 overflow-hidden shadow-inner">
+                                    <div class="bg-gradient-to-r from-indigo-500 to-emerald-500 h-1.5 rounded-full transition-all duration-500" style="width: ${percentage}%"></div>
                                 </div>
                             </div>
                         `;
-                        cellClass = "px-4 py-3.5 text-slate-700 text-center"; // Progress bar tetap di tengah
+                        cellClass = "px-4 py-2.5 text-slate-700 text-center";
                     } else if (header === targetCol) {
                         let rawVal = cellData !== undefined && cellData !== null ? cellData.toString().trim() : '-';
-                        content = `<span class="font-bold text-indigo-600 bg-indigo-50 py-1 px-3 rounded-lg inline-block">${rawVal}</span>`;
-                        cellClass = "px-4 py-3.5 text-slate-700 text-center"; // Kolom target utama di tengah
+                        content = `<span class="font-bold text-indigo-600 bg-indigo-50 py-0.5 px-2.5 rounded-lg inline-block text-xs">${rawVal}</span>`;
+                        cellClass = "px-4 py-2.5 text-slate-700 text-center";
                     } else if (!cellData) {
                         content = `<span class="text-slate-300 italic">-</span>`;
                     }
@@ -696,6 +803,8 @@
 
             ui.widgetTotalProvinsi.textContent = uniqueProvincesCount;
             ui.widgetJumlahBidang.textContent = totalBidang.toLocaleString('id-ID');
+            ui.widgetTotalAda.textContent = sumAda.toLocaleString('id-ID');
+            ui.widgetTotalTidakAda.textContent = sumTidakAda.toLocaleString('id-ID');
             
             let avgProgres = filteredData.length > 0 ? (totalProgres / filteredData.length) : 0;
             ui.widgetRataProgres.textContent = avgProgres.toFixed(2) + "%";
@@ -718,8 +827,8 @@
                     labels: ['Ada', 'Tidak Ada'],
                     datasets: [{
                         data: [totalAda, totalTidakAda],
-                        backgroundColor: ['#6366f1', '#cbd5e1'],
-                        hoverBackgroundColor: ['#4f46e5', '#94a3b8'],
+                        backgroundColor: ['#10b981', '#cbd5e1'],
+                        hoverBackgroundColor: ['#059669', '#94a3b8'],
                         borderWidth: 2,
                         borderColor: '#ffffff'
                     }]
@@ -730,7 +839,7 @@
                     plugins: {
                         legend: { display: false }
                     },
-                    cutout: '70%'
+                    cutout: '65%'
                 }
             });
         }
@@ -765,12 +874,10 @@
             ui.historyErrorState.classList.add('hidden');
             ui.historyTableBody.innerHTML = '';
             
-            // Hitung tanggal otomatis: tepat 1 hari sebelum hari ini
             const targetDate = new Date();
             targetDate.setDate(targetDate.getDate() - 1);
-            const formattedYesterday = targetDate.toISOString().split('T')[0]; // Format: YYYY-MM-DD
-
-            // Jika GID Histori belum diisi, ambil sampel data dan set tanggalnya ke H-1
+            const formattedYesterday = targetDate.toISOString().split('T')[0];
+            
             if (HISTORY_GID === 'GANTI_DENGAN_GID_HISTORI_ANDA') {
                 setTimeout(() => {
                     historyData = [];
@@ -779,10 +886,10 @@
                     const targetCol = getTargetColumn(headers);
                     
                     if (rawData && rawData.length > 0) {
-                        const sampleData = rawData.slice(0, 5); // Ambil beberapa sampel
+                        const sampleData = rawData.slice(0, 5);
                         
                         historyData = sampleData.map(row => ({
-                            tanggal: formattedYesterday, // Otomatis terisi tanggal kemarin
+                            tanggal: formattedYesterday,
                             provinsi: provCol ? row[provCol] : '-',
                             pic: picCol ? row[picCol] : '-',
                             nilai: targetCol ? row[targetCol] : '0'
@@ -795,18 +902,16 @@
                     
                     renderHistoryTable();
                     ui.historyLoadingState.classList.add('hidden');
-                }, 800);
+                }, 1000);
                 return;
             }
 
-            // Jika menggunakan Google Sheet Histori terpisah
             Papa.parse(HISTORY_CSV_URL, {
                 download: true,
                 header: true,
                 skipEmptyLines: true,
                 complete: function(results) {
                     if (results.data && results.data.length > 0) {
-                        // Filter data dari Sheet khusus untuk hanya menampilkan tanggal H-1
                         historyData = results.data.filter(row => {
                             const dateKey = Object.keys(row).find(k => k.toLowerCase().includes('tanggal') || k.toLowerCase().includes('date')) || 'tanggal';
                             const rowDate = row[dateKey] ? row[dateKey].trim() : '';
@@ -815,29 +920,12 @@
                     } else {
                         historyData = [];
                     }
-                    
                     renderHistoryTable();
                     ui.historyLoadingState.classList.add('hidden');
                 },
                 error: function(error) {
                     ui.historyLoadingState.classList.add('hidden');
-                    ui.historyErrorState.classList.remove('hidden');
-                }
-            });
-        }
-
-            Papa.parse(HISTORY_CSV_URL, {
-                download: true,
-                header: true,
-                skipEmptyLines: true,
-                complete: function(results) {
-                    historyData = results.data;
-                    renderHistoryTable();
-                    ui.historyLoadingState.classList.add('hidden');
-                },
-                error: function(error) {
-                    ui.historyLoadingState.classList.add('hidden');
-                    ui.historyErrorState.classList.remove('hidden');
+                    ui.historyErrorState.classList.add('hidden');
                 }
             });
         }
@@ -846,7 +934,7 @@
             ui.historyTableBody.innerHTML = '';
             
             if (historyData.length === 0) {
-                ui.historyTableBody.innerHTML = `<tr><td colspan="5" class="px-4 py-6 text-center text-slate-400 italic">Tidak ada data histori.</td></tr>`;
+                ui.historyTableBody.innerHTML = `<tr><td colspan="5" class="px-4 py-6 text-center text-slate-400 italic">Tidak ada data histori untuk tanggal kemarin.</td></tr>`;
                 return;
             }
 
@@ -858,15 +946,15 @@
                 
                 const dateKey = Object.keys(row).find(k => k.toLowerCase().includes('tanggal') || k.toLowerCase().includes('date')) || 'tanggal';
                 const provKey = Object.keys(row).find(k => k.toLowerCase().includes('prov')) || 'provinsi';
-                const picKey = Object.keys(row).find(k => k.toLowerCase().includes('pic') || k.toLowerCase().includes('jawab')) || 'pic';
+                const picKey = Object.keys(row).find(k => k.toLowerCase().includes('pic' ) || k.toLowerCase().includes('jawab')) || 'pic';
                 const valKey = Object.keys(row).find(k => k.toLowerCase().includes('progres') || k.toLowerCase().includes('persentase') || k.toLowerCase().includes('%') || k.toLowerCase().includes('nilai')) || Object.keys(row)[2] || 'nilai';
 
                 tr.innerHTML = `
-                    <td class="px-4 py-3.5 text-center text-slate-400 font-medium">${index + 1}</td>
-                    <td class="px-4 py-3.5 text-slate-700 text-center">${row[dateKey] || '-'}</td>
-                    <td class="px-4 py-3.5 text-slate-800 font-medium text-center">${row[provKey] || '-'}</td>
-                    <td class="px-4 py-3.5 text-slate-600 text-center">${row[picKey] || '-'}</td>
-                    <td class="px-4 py-3.5 text-center font-bold text-slate-800">${row[valKey] || '-'}</td>
+                    <td class="px-4 py-2.5 text-center text-slate-400 font-medium">${index + 1}</td>
+                    <td class="px-4 py-2.5 text-slate-700 text-center">${row[dateKey] || '-'}</td>
+                    <td class="px-4 py-2.5 text-slate-800 font-medium text-center">${row[provKey] || '-'}</td>
+                    <td class="px-4 py-2.5 text-slate-600 text-center">${row[picKey] || '-'}</td>
+                    <td class="px-4 py-2.5 text-center font-bold text-slate-800">${row[valKey] || '-'}</td>
                 `;
                 fragment.appendChild(tr);
             });
