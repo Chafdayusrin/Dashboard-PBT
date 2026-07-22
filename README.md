@@ -765,6 +765,12 @@
             ui.historyErrorState.classList.add('hidden');
             ui.historyTableBody.innerHTML = '';
             
+            // Hitung tanggal otomatis: tepat 1 hari sebelum hari ini
+            const targetDate = new Date();
+            targetDate.setDate(targetDate.getDate() - 1);
+            const formattedYesterday = targetDate.toISOString().split('T')[0]; // Format: YYYY-MM-DD
+
+            // Jika GID Histori belum diisi, ambil sampel data dan set tanggalnya ke H-1
             if (HISTORY_GID === 'GANTI_DENGAN_GID_HISTORI_ANDA') {
                 setTimeout(() => {
                     historyData = [];
@@ -773,28 +779,52 @@
                     const targetCol = getTargetColumn(headers);
                     
                     if (rawData && rawData.length > 0) {
-                        const sampleData = rawData.slice(0, 5);
-                        const yesterday = new Date();
-                        yesterday.setDate(yesterday.getDate() - 1);
-                        const dateStr = yesterday.toISOString().split('T')[0];
+                        const sampleData = rawData.slice(0, 5); // Ambil beberapa sampel
                         
                         historyData = sampleData.map(row => ({
-                            tanggal: dateStr,
+                            tanggal: formattedYesterday, // Otomatis terisi tanggal kemarin
                             provinsi: provCol ? row[provCol] : '-',
                             pic: picCol ? row[picCol] : '-',
                             nilai: targetCol ? row[targetCol] : '0'
                         }));
                     } else {
                         historyData = [
-                            { tanggal: '2026-06-01', provinsi: 'Jawa Barat', pic: 'Fikri', nilai: '800' }
+                            { tanggal: formattedYesterday, provinsi: 'Jawa Barat', pic: 'Fikri', nilai: '800' }
                         ];
                     }
                     
                     renderHistoryTable();
                     ui.historyLoadingState.classList.add('hidden');
-                }, 1000);
+                }, 800);
                 return;
             }
+
+            // Jika menggunakan Google Sheet Histori terpisah
+            Papa.parse(HISTORY_CSV_URL, {
+                download: true,
+                header: true,
+                skipEmptyLines: true,
+                complete: function(results) {
+                    if (results.data && results.data.length > 0) {
+                        // Filter data dari Sheet khusus untuk hanya menampilkan tanggal H-1
+                        historyData = results.data.filter(row => {
+                            const dateKey = Object.keys(row).find(k => k.toLowerCase().includes('tanggal') || k.toLowerCase().includes('date')) || 'tanggal';
+                            const rowDate = row[dateKey] ? row[dateKey].trim() : '';
+                            return rowDate === formattedYesterday;
+                        });
+                    } else {
+                        historyData = [];
+                    }
+                    
+                    renderHistoryTable();
+                    ui.historyLoadingState.classList.add('hidden');
+                },
+                error: function(error) {
+                    ui.historyLoadingState.classList.add('hidden');
+                    ui.historyErrorState.classList.remove('hidden');
+                }
+            });
+        }
 
             Papa.parse(HISTORY_CSV_URL, {
                 download: true,
